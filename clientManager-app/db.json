@@ -1,0 +1,28 @@
+{
+  "clients": [
+    {
+      "name": "dsadd",
+      "company": "sadd",
+      "email": "adsd@gmail.com",
+      "phone": "123",
+      "notes": "dsad",
+      "id": 3
+    },
+    {
+      "name": "juancho",
+      "company": "dsad",
+      "email": "juan@dfasd.com",
+      "phone": "1234",
+      "notes": "juan tiene una queja",
+      "id": 4
+    },
+    {
+      "name": "dsdad",
+      "company": "asdas",
+      "email": "sdaddasdas@dasd.com",
+      "phone": "1234",
+      "notes": "123",
+      "id": 5
+    }
+  ]
+}
