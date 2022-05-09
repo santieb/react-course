@@ -1,14 +1,18 @@
 import List from '../components/List'
 import Course from '../components/Course'
 import Layout from '../components/Layout'
+import BlogList from '../components/BlogList'
 
 const Home = ({ guitars, courses, blogs }) => {
   return (
-    <Layout page="inicio">
+    <Layout page="inicio" guitar={guitars[3]}>
       <main className="contenedor">
         <h1 className="heading">Nuestra Colección</h1>
         <List guitars={guitars}></List>
         <Course course={courses}/>
+        <section className="contenedor">
+        <BlogList blogs={blogs}></BlogList>
+        </section>
       </main>
     </Layout>
   )

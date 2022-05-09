@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 
-const Layout = ({children, page}) => {
+const Layout = ({children, page, guitar=null}) => {
   return (
     <div>
       <Head>
@@ -12,7 +12,7 @@ const Layout = ({children, page}) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet"></link>
       </Head>
-      <Header/>
+      <Header guitar={guitar}/>
       {children}
       <Footer/>
     </div>

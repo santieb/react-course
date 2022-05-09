@@ -3,6 +3,7 @@
   background-size: cover;
   background-position: center;
   padding: 5rem 0;
+  position: relative;
 }
 
 .bar {
@@ -41,4 +42,66 @@
 
 .nav a:hover {
   background-color: var(--primary);
+}
+
+.model {
+  color: var(--blanco);
+  margin-top: 5rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .model {
+    text-align: left;
+    width: 50%;
+  }
+}
+
+.model h2 {
+  font-size: 8rem;
+}
+
+.model p:first-of-type {
+  font-size: 2.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.price {
+  font-size: 6rem;
+  color: var(--primary);
+  font-weight: 900;
+  line-height: 0;
+}
+
+.link {
+  margin-top: 2rem;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--blanco);
+  border: 2px solid var(--primary);
+  padding: 1rem 5rem;
+  transition-property: background-color;
+  transition-duration: .3s;
+}
+
+.link:hover {
+  background-color: var(--primary);
+  color: var(--blanco);
+}
+
+.guitar {
+  display: none;
+}
+@media (min-width: 992px) {
+  .guitar {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
 }
