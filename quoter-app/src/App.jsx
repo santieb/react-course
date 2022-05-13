@@ -1,8 +1,11 @@
+import { QuoterProvider } from "./context/QuoterProvider"
 import InsuranceApp from "./components/InsuranceApp"
 
 const App = () => {
   return (
-    <InsuranceApp></InsuranceApp>
+    <QuoterProvider>
+      <InsuranceApp/>
+    </QuoterProvider>
   )
 }
 
