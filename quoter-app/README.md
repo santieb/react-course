@@ -1,4 +1,4 @@
-### Crypto - App
+### Quoter - App
 
 > + React
 > + Tailwind

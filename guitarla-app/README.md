@@ -1,4 +1,4 @@
-### Crypto - App
+### Guitarla - App
 
 > + React
 > + Vite
