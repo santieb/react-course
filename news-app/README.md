@@ -5,7 +5,7 @@
 > + Context
 > + Hooks
 
-Create an .env file and add your api key https://openweathermap.org/
+Create an .env file and add your api key https://newsapi.org/
 
 In the project directory, you can run:
 
