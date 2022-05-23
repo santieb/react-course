@@ -8,7 +8,6 @@ const userCrtl = {
 
     const user = await User.findOne({ email })
 
-    console.log(user)
     if (!user) return res.status(400).json({ message: 'El usuario no existe' })
 
     const isMatch = await user.comparePassword(password)

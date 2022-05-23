@@ -17,6 +17,4 @@ router.route('/collaborator/:id')
   .post(auth, projectCtrl.addCollaborator)
   .post(auth, projectCtrl.deleteCollaborator)
 
-router.get('/tasks/:id', auth, projectCtrl.getTasks)
-
 export default router

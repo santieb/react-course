@@ -11,7 +11,7 @@ const auth = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
     req.user = await User.findById(decoded.id).select('-password -__v -confirmed -token -createdAt -updatedAt')
-    console.log(req.user)
+
     next()
   } catch (err) {
     return res.status(404).json({ msg: err })
