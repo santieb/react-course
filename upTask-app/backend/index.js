@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import express from 'express'
+import cors from 'cors'
 import connectionDB from './config/db.js'
 
 const app = express()
@@ -9,6 +10,19 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 connectionDB()
+
+const whiteList = [process.env.FRONTEND_URL]
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whiteList.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions))
 
 import userRoutes from './routes/userRoutes.js'
 import projectRoutes from './routes/projectRoutes.js'
