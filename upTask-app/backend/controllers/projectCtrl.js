@@ -5,7 +5,7 @@ const projectCtrl = {
   getProject: async (req, res) => {
     const { id } = req.params
     try {
-      const project = await Project.findById(id)
+      const project = await Project.findById(id).populate('tasks')
 
       if(!project) return res.status(404).json({ msg: 'No se encontró el proyecto' })
   
@@ -13,17 +13,14 @@ const projectCtrl = {
   
       const tasks = await Task.find({ project: id })
 
-      res.json({ 
-        project,
-        tasks
-      })
+      res.json(project)
     } catch (e) {
       res.status(500).json({ error: e.message })
     }
   },
   getProjects: async (req, res) => {
     const { id } =  req.user
-    const projects = await Project.find({ creator: id })
+    const projects = await Project.find({ creator: id }).select('-tasks')
     res.json(projects)
   },
   newProject: async (req, res) => {

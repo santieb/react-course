@@ -26,6 +26,9 @@ const projectCtrl = {
 
       const task = await Task.create({ name, description, priority, project })
 
+      existProject.tasks = [...existProject.tasks, task._id]
+      await existProject.save()
+
       res.json(task)
     } catch (err) {
       res.status(500).json({ msg: 'No se encontró el proyecto'})

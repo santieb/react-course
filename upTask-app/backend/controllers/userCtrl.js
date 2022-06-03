@@ -1,7 +1,7 @@
 import User from '../models/userModel.js'
 import generateID from '../helpers/generateID.js'
 import generateJWT from '../helpers/generateJwt.js'
-import emailRegister from '../helpers/emailRegister.js'
+import { emailRegister, emailForgotPassword } from '../helpers/sendEmail.js'
 
 const userCrtl = {
   login: async (req, res) => {
@@ -9,12 +9,12 @@ const userCrtl = {
 
     const user = await User.findOne({ email })
 
-    if (!user) return res.status(400).json({ msg: 'El usuario no existe' })
+    if (!user) return res.status(403).json({ msg: 'El usuario no existe' })
 
     const isMatch = await user.comparePassword(password)
-    if (!isMatch) return res.status(400).json({ msg: 'La contraseña es incorrecta' })
+    if (!isMatch) return res.status(403).json({ msg: 'La contraseña es incorrecta' })
 
-    if(!user.confirmed) return res.status(200).json({ msg: 'Tu cuenta no ha sido confirmada' })
+    if(!user.confirmed) return res.status(403).json({ msg: 'Tu cuenta no ha sido confirmada' })
 
     const { id, name } = user
     res.json({ 
@@ -68,6 +68,9 @@ const userCrtl = {
     try {
       user.token = generateID()
       await user.save()
+
+      const { name, token } = user
+      emailForgotPassword({ name, email, token})
 
       res.json({ msg: 'Hemos enviado un email con las instrucciones' })
     } catch (err) {
