@@ -13,8 +13,10 @@ router.route('/:id')
   .put(auth, projectCtrl.updateProject)
   .delete(auth, projectCtrl.deleteProject)
 
-router.route('/collaborator/:id')
-  .post(auth, projectCtrl.addCollaborator)
-  .post(auth, projectCtrl.deleteCollaborator)
+router.post('/collaborators', auth, projectCtrl.searchCollaborator)
+
+router.post('/collaborators/:id', auth, projectCtrl.addCollaborator)
+
+router.delete('/collaborators/:id/:idCollaborator', auth, projectCtrl.deleteCollaborator)
 
 export default router

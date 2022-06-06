@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
         const url = 'users/profile'
         const { data } = await clientAxios(url, config)
         setAuth(data)
-
+        navigate('/projects')
       } catch (e) {
         setAuth({})
       } finally {
@@ -37,6 +37,9 @@ const AuthProvider = ({ children }) => {
     authUser()
   }, [])
 
+  const signOutAuth = () => {
+    setAuth({})
+  }
 
   return (
     <AuthContext.Provider 
@@ -44,7 +47,8 @@ const AuthProvider = ({ children }) => {
         setAuth,
         auth,
         loading,
-        setLoading
+        setLoading,
+        signOutAuth
       }}>
       {children}
     </AuthContext.Provider>

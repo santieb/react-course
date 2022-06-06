@@ -12,6 +12,7 @@ import Projects from './pages/Projects'
 import NewProject from './pages/NewProject'
 import Project from './pages/Project'
 import EditProject from './pages/EditProject'
+import NewCollaborator from './pages/NewCollaborator'
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="projects" element={<RouteProtected/>}>
               <Route index element={<Projects/>}/>
               <Route  path="create-project" element={<NewProject/>}/>
+              <Route  path="new-collaborator/:id" element={<NewCollaborator/>}/>
               <Route  path=":id" element={<Project/>}/>
               <Route  path="edit/:id" element={<EditProject/>}/>        
             </Route>
