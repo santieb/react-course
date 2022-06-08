@@ -2,7 +2,7 @@
 
 > + React
 > + Redux
-> + Strapi
+> + Json server
 
 In the project directory, you can run:
 
