@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Jugo de Zanahoria",
+      "price": "300"
+    },
+    {
+      "id": 2,
+      "name": "jugo de naranja",
+      "price": "230"
+    },
+    {
+      "id": 3,
+      "name": "juego de arandano",
+      "price": "840"
+    },
+    {
+      "name": "limonada",
+      "price": 250,
+      "id": 4
+    }
+  ]
+}
