@@ -7,11 +7,11 @@ const auth = async (req, res, next) => {
     try {
       const user = jwt.verify(token, process.env.SIGNATURE_TOKEN)
       req.user = user
-      return next()
     } catch (err) {
-      res.status(500).json({ error: err.message })
+      console.log({ error: err.message })
     }
   }
+  return next()
 }
 
 module.exports = auth

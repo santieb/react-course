@@ -2,12 +2,11 @@ const express = require('express')
 const router = express.Router()
 const { check } = require('express-validator')
 
-const authCtrl = require('../controllers/authCtrl')
+const archivesCtrl = require('../controllers/archivesCtrl')
 const auth = require('../middlewares/auth')
 
-router.post('/login', [
-    check('email', 'The email is invalid').isEmail()
-  ], authCtrl.login
-)
+router.post('/',auth , archivesCtrl.uploadFiles)
+
+router.delete('/:id',auth ,archivesCtrl.deleteFiles)
 
 module.exports = router
