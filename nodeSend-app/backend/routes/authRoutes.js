@@ -10,4 +10,6 @@ router.post('/login', [
   ], authCtrl.login
 )
 
+router.get('/',auth , authCtrl.userAuth)
+
 module.exports = router

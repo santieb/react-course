@@ -1,9 +1,16 @@
 const express = require('express')
 const app = express()
 const connectionDB = require('./config/db')
+const cors = require('cors')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+const optionsCors = {
+  origin: process.env.FRONTEND_URL
+}
+
+app.use(cors(optionsCors))
 
 connectionDB()
 
