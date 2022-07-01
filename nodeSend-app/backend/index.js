@@ -6,6 +6,8 @@ const cors = require('cors')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+app.use(express.static('uploads'))
+
 const optionsCors = {
   origin: process.env.FRONTEND_URL
 }

@@ -24,11 +24,12 @@ export default (state, action) => {
         token: action.payload,
         authenticated: true
       }
-      case USER_AUTH:
-        return {
-          ...state,
-          user: action.payload,
-        }
+    case USER_AUTH:
+      return {
+        ...state,
+        user: action.payload,
+        authenticated: true
+      }
     case RESET_ALERT:
       return {
         ...state,

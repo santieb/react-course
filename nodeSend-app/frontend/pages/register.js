@@ -65,13 +65,13 @@ const register = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-            </div>
 
             {formik.touched.email && formik.errors.email ? 
               <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
                 <p className="font-bold">Error</p>
                 <p>{formik.errors.email}</p>
               </div> : null}
+            </div>
 
             <div className="mb-4">
               <label className="block text-black text-sm font-bold mb-5" htmlFor="password">Contraseña</label>

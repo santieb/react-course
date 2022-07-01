@@ -8,11 +8,11 @@ const linkCtrl = {
     const errors = validationResult(req)
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
 
-    const { name_original } = req.body
+    const { name_original, name } = req.body
 
     const link = new Link()
     link.url = shortid.generate()
-    link.name = shortid.generate()
+    link.name = name
     link.name_original = name_original
 
     if (req.user) {
@@ -36,6 +36,15 @@ const linkCtrl = {
       res.status(500).json({ error: err.message })
     }
   },
+  getLinks: async (req, res, next) => {
+    try {
+      const links = await Link.find().select('url -_id')
+
+      res.json({ links })
+    } catch (err) {
+      console.log(err)
+    }
+  },
   getLink: async (req, res, next) => {
     const { url } = req.params
 
@@ -43,19 +52,29 @@ const linkCtrl = {
 
     if(!link) return res.status(400).json({ msg: 'link not found' })
 
-    const { downloads, name } = link
-    if (downloads === 1) {
-      req.archive = name
+    return res.json({ archive: link.name, password: false })
+  },
+  hasPassword: async (req, res, next) => {
+    const { url } = req.params
 
-      await Link.findOneAndRemove(url)
-      next()
-    }
-    else {
-      link.downloads--
-      await link.save()
-    }
+    const link = await Link.findOne({ url })
 
-    res.json({ archive: link.name })
+    if(!link) return res.status(400).json({ msg: 'link not found' })
+
+    if (link.password) return res.json({ password: true, archive: link.url })
+    
+    next()
+  },
+  verifyPassword: async (req, res, next) => {
+    const { url } = req.params
+    const { password } = req.body
+
+    const link = await Link.findOne({ url })
+
+    const isMatch = await bcrypt.compare(password, link.password)
+      if (!isMatch) return res.status(401).json({ msg: 'The password is wrong' })
+
+    next()
   }
 }
 

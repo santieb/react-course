@@ -1,3 +1,4 @@
+const Link = require('../models/linkModel')
 const shortid = require('shortid')
 const multer = require('multer')
 const fs = require('fs')
@@ -26,8 +27,27 @@ const archivesCtrl = {
       else console.log('error')
     })
   },
+  download : async (req, res, next) => {
+    const { id } = req.params
+
+    const link = await Link.findOne({ name: id})
+
+    const archive = __dirname + '/../uploads/' + id
+    res.download(archive)
+
+    const { downloads, name } = link
+    if (downloads === 1) {
+      req.archive = name
+
+      await Link.findOneAndRemove(link.id)
+      next()
+    }
+    else {
+      link.downloads--
+      await link.save()
+    }
+  },
   deleteFiles: async (req, res) => {
-    console.log(req.archive)
     try {
       fs.unlinkSync(__dirname + `/../uploads/${req.archive}`)
     } catch (e) {

@@ -3,7 +3,6 @@ const router = express.Router()
 const { check } = require('express-validator')
 
 const linkCtrl = require('../controllers/linkCtrl')
-const archivesCtrl = require('../controllers/archivesCtrl')
 const auth = require('../middlewares/auth')
 
 router.post('/',[
@@ -12,6 +11,10 @@ router.post('/',[
   ], auth, linkCtrl.newLink
 )
 
-router.get('/:url', linkCtrl.getLink, archivesCtrl.deleteFiles)
+router.get('/', linkCtrl.getLinks)
+
+router.get('/:url', linkCtrl.hasPassword, linkCtrl.getLink)
+
+router.post('/:url', linkCtrl.verifyPassword, linkCtrl.getLink)
 
 module.exports = router

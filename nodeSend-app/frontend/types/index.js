@@ -4,8 +4,21 @@ export const REGISTER_ERROR = 'REGISTER_ERROR'
 export const LOGIN_SUCESS = 'LOGIN_SUCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 
+export const SHOW_ALERT = 'SHOW_ALERT'
 export const RESET_ALERT = 'RESET_ALERT'
 export const USER_AUTH = 'USER_AUTH'
 
 export const LOGOUT = 'LOGOUT'
 
+export const UPLOAD_FILE = 'UPLOAD_FILE'
+export const UPLOAD_FILE_SUCESS = 'UPLOAD_FILE_SUCESS'
+export const UPLOAD_FILE_ERROR = 'UPLOAD_FILE_ERROR'
+
+export const CREATE_LINK_SUCESS = 'CREATE_LINK_SUCESS'
+export const CREATE_LINK_ERROR = 'CREATE_LINK__ERROR'
+
+export const RESET_STATE = 'RESET_STATE'
+
+export const ADD_PASSWORD = 'ADD_PASSWORD'
+
+export const ADD_DOWNLOADS = 'ADD_DOWNLOADS'
