@@ -1,10 +1,11 @@
-import react from 'react';
+import { useContext } from 'react'
 import Search from './UI/Search'
 import Nav from './Layout/Nav'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import Button from './UI/Button'
+import { FirebaseContext } from '../firebase'
 
 const ContainerHeader = styled.div`
   max-width: 1200px;
@@ -26,7 +27,8 @@ const Logo = styled.p`
 `
 
 const Header = () => {
-  const user = false
+  const user = true
+  console.log(useContext(FirebaseContext))
 
   return (
     <header css={css`
@@ -34,10 +36,7 @@ const Header = () => {
       padding: 1rem 0;
     `}>
       <ContainerHeader>
-        <div css={css`
-          display: flex;
-          align-items: center;
-        `}>
+        <div css={css`display: flex;align-items: center;`}>
           <Link href="/">
             <Logo>P</Logo>
           </Link>
@@ -45,14 +44,11 @@ const Header = () => {
           <Nav/>
         </div>
 
-        <div css={css`
-          display: flex;
-          align-items: center;
-        `}>
+        <div css={css`display: flex;align-items: center;`}>
           { user ?
             <div css={css`display: flex; align-items: center;`}>
-              <p css={css`margin-right: 2rem;`}>Hola santiago</p>
-              <Button bgColor='true'>Cerrar sesión</Button>
+              <p css={css`margin-right: 2rem;`}>Hola {user.displayName}</p>
+              <Button onClick={() => firebase.logout()} bgColor='true'>Cerrar sesión</Button>
             </div> 
             : 
             <div css={css`display: flex; align-items: center;`}>
