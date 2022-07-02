@@ -1,0 +1,27 @@
+{
+  "name": "producthunt-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@emotion/babel-plugin": "^11.9.2",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "babel-plugin-emotion": "^11.0.0",
+    "next": "12.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.18.0",
+    "eslint-config-next": "12.2.0"
+  }
+}
