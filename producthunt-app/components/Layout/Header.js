@@ -1,11 +1,11 @@
-import { useContext } from 'react'
-import Search from './UI/Search'
-import Nav from './Layout/Nav'
+import Search from '../UI/Search'
+import Nav from './Nav'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import Button from './UI/Button'
-import { FirebaseContext } from '../firebase'
+import Button from '../UI/Button'
+import useAuth from '../../hooks/useAuth'
+import firebase from '../../firebase'
 
 const ContainerHeader = styled.div`
   max-width: 1200px;
@@ -27,14 +27,10 @@ const Logo = styled.p`
 `
 
 const Header = () => {
-  const user = true
-  console.log(useContext(FirebaseContext))
+  const user = useAuth()
 
   return (
-    <header css={css`
-      border-bottom: 2px solid #e1e1e1;
-      padding: 1rem 0;
-    `}>
+    <header css={css`border-bottom: 2px solid #e1e1e1;padding: 1rem 0;`}>
       <ContainerHeader>
         <div css={css`display: flex;align-items: center;`}>
           <Link href="/">

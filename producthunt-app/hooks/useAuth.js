@@ -1,19 +1,23 @@
-import { useState, useEffect } from 'react'
-import firebase from '../firebase'
+import { useState,useEffect } from "react"
+import firebase from "../firebase"
+import { onAuthStateChanged } from 'firebase/auth';
 
-function useAuth() {
-  const [userAuth, setUserAuth] = useState(null)
+function useAuth(){
+    const [userAuth,setUserAuth] = useState(null)
 
-  useEffect(() => {
-    const unsuscribe = firebase.auth.onAuthStateChanged(user => {
-      if (user) setUserAuth(user)
-      else setUserAuth(null)
-    })
+    useEffect(() => {
+        const onSuscribe = firebase.auth.onAuthStateChanged(user => {
+            if(user){
+                setUserAuth(user)
+            } else {
+                setUserAuth(null)
+            }
+        })
 
-    return () => unsuscribe()
-  }, [])
+        return () => onSuscribe()
+    }, [])
 
-  return userAuth
+    return userAuth
 }
 
 export default useAuth

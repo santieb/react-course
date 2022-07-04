@@ -3,9 +3,9 @@ import useAuth from '../hooks/useAuth'
 
 function MyApp({ Component, pageProps }) {
   const user = useAuth()
-  console.log(user)
+
   return (
-    <FirebaseContext.Provider 
+    <FirebaseContext.Provider
       values={{
         firebase,
         user
