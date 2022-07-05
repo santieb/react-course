@@ -1,7 +1,7 @@
-import { initializeApp } from 'firebase/app';
+import {initializeApp} from 'firebase/app';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut, getAuth, updateProfile } from 'firebase/auth';
 import 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import {getFirestore} from 'firebase/firestore'
 
 import 'firebase/compat/firestore'
 import firebaseConfig from './config'

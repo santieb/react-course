@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+const { createContext } = require('react')
 
 const FirebaseContext = createContext(null)
 

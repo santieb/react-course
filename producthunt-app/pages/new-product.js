@@ -63,21 +63,25 @@ const NewProduct = () => {
   };
 
   async function createProduct()  {
-    if (!user) return router.push('/login')
+    try {
+      if (!user) return router.push('/login')
 
-    const product = {
-      name,
-      company,
-      url,
-      description,
-      URLimg,
-      votes: 0,
-      comments: [],
-      create: Date.now()
+      const product = {
+        name,
+        company,
+        url,
+        description,
+        URLimg,
+        votes: 0,
+        comments: [],
+        created: Date.now()
+      }
+
+      await addDoc(collection(db, 'products'), (product))
+    } catch (err) {
+      setErrors('Error al agregar un producto', err.message)
+      console.error(err.message)
     }
-
-    const products = await addDoc(collection(db, 'products'), (product))
-
   }
 
   return (
