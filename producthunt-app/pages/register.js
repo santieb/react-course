@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Layout from '../components/Layout/Layout'
 import { Form, Field, InputSubmit,  Error } from '../components/UI/Form'
-import { css } from '@emotion/react';
-import useValidation from '../hooks/useValidation';
+import { css } from '@emotion/react'
+import useValidation from '../hooks/useValidation'
 import registerValidation from '../validation/registerValidation.js'
 import firebase from '../firebase'
 import { useRouter } from 'next/router'
